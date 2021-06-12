@@ -1,0 +1,9 @@
+<div class="alert alert-secondary" role="alert" *ngIf="!syncActive">
+    {{title}}
+</div>  
+<div class="alert alert-success" role="alert" *ngIf="syncActive && !hasError">
+    Sincronización exitosa de {{title}}!
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="syncActive && hasError">
+    Error al sincronizar {{title}}!
+</div>

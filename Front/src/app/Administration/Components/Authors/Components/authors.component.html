@@ -1,0 +1,22 @@
+<component-messages #messages></component-messages>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="offset-10 card-header-button" style="text-align: end;">
+                    <!-- <button class="btn btn-primary m-r-5" (click)="getAuthorsReport()"
+                        ngbTooltip="Excel" placement="top" container="body">
+                        Excel
+                    </button> -->
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table table-responsive smart-table">
+                    <smart-table #smartTable [settings]="settings" [rowCount]="totalRecords" [labelNoRecords]="'No se encontraron registros'" [source]="authorsList" (edit)="editDependents($event)" (sortColumn)="sortDataTable($event)" (pageChange)="changePage($event)">
+                    </smart-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<component-loader [show]=showLoader></component-loader>

@@ -1,0 +1,36 @@
+<div style="cursor: pointer; text-align: center; color: #5C068C;" (click)="openModal()">
+  <span class="fa fa-list" aria-hidden="true"></span>
+</div>
+
+<ng-template #modalContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{titleModal}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="padding: 0% 5% 0% 5%;">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+          <thead class="success" style="font-size:12px;">
+            <tr>
+              <th>{{ columnsTitleModal }}</th>
+              <th>{{ columnsVisibleTitleModal }}</th>
+            </tr>
+          </thead>
+          <tbody style="font-size:11px;">
+            <tr *ngFor="let item of grid.getColumns()">
+              <td style="cursor: pointer;">{{item.title}}</td>
+              <td><input type="checkbox" [(ngModel)]="item.visible"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-secondary" (click)="acceptModal()">{{ acceptMessage }}</button> -->
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">{{ closeMessage }}</button>
+  </div>
+</ng-template>

@@ -1,0 +1,131 @@
+<component-messages #messages></component-messages>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <form [formGroup]="filterForm" class="form-group m-t-30" autocomplete="off" novalidate>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="filterFileDateStart" class="colorTitle">Desde</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <button (click)="d1.toggle()" class="btn btn-outline-secondary calendar fa fa-calendar" type="button"></button>
+                                </div>
+                                <input type="text" class="form-control" id="filterFileDateStart" formControlName="filterFileDateStart" name="filterFileDateStart" ngbDatepicker #d1="ngbDatepicker" [minDate]="minDate" [readonly]="true" [maxDate]="maxDate" placeholder="dd/mm/aaaa">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="filterFileDateEnd" class="colorTitle">Hasta</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <button (click)="d2.toggle()" class="btn btn-outline-secondary calendar fa fa-calendar" type="button"></button>
+                                </div>
+                                <input type="text" class="form-control" id="filterFileDateEnd" formControlName="filterFileDateEnd" name="filterFileDateEnd" ngbDatepicker #d2="ngbDatepicker" [minDate]="minDate" [readonly]="true" [maxDate]="maxDate" placeholder="dd/mm/aaaa">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="offset-10 card-header-button" style="text-align: end;">
+                    <button class="btn btn-primary m-r-5" (click)="getBooksFilters()"
+                        ngbTooltip="Buscar" placement="top" container="body">
+                        <i aria-hidden="true" class="icon-magnifier text"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body"> 
+                <div class="table table-responsive smart-table">
+                    <smart-table #smartTable [settings]="settings" [rowCount]="totalRecords" [labelNoRecords]="'No se encontraron registros'" [source]="booksList" (edit)="editDependents($event)" (sortColumn)="sortDataTable($event)" (pageChange)="changePage($event)">
+                    </smart-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <id-modal #createModal [windowClass]="''" [showButtons]=true size="md" [closeModalInAcceptEvent]=false 
+title="Crear Producto" (accept)="createProduct()">
+    <ng-container modal-body>
+        <form class="form-group m-t-30" [formGroup]="createProductForm">
+            <div class="row m-b-10">
+                <div class="col-md-6">
+                    <label class="colorTitle">Código</label>
+                    <div class="input-group">
+                        <input class="form-control" type="text" formControlName="code" placeholder="Ingrese código producto" [ngClass]="{'has-error': (hasError && createProductForm.controls['code'].errors) || (createProductForm.controls['code'].errors && (createProductForm.controls['code'].dirty || createProductForm.controls['code'].touched))}">
+                    </div>
+                    <div class="has-error" *ngIf="(hasError && createProductForm.controls['code'].errors) || (createProductForm.controls['code'].errors && (createProductForm.controls['code'].dirty || createProductForm.controls['code'].touched))">
+                        <span *ngIf="createProductForm.controls['code'].errors.required">
+                            Campo requerido
+                        </span>
+                        <span *ngIf="createProductForm.controls['code'].errors.minlength">
+                                El campo tiene un minimo de caracteres de 
+                            {{createProductForm.controls['code'].errors.minlength.requiredLength}}
+                        </span>
+                        <span *ngIf="createProductForm.controls['code'].errors.maxlength">
+                            El campo tiene un máximo de caracteres de 
+                            {{createProductForm.controls['code'].errors.maxlength.requiredLength}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="colorTitle">Nombre</label>
+                    <div class="input-group">
+                        <input class="form-control" type="text" formControlName="name" placeholder="Ingrese nombre producto" [ngClass]="{'has-error': (hasError && createProductForm.controls['name'].errors) || (createProductForm.controls['name'].errors && (createProductForm.controls['name'].dirty || createProductForm.controls['name'].touched))}">
+                    </div>
+                    <div class="has-error" *ngIf="(hasError && createProductForm.controls['name'].errors) || (createProductForm.controls['name'].errors && (createProductForm.controls['name'].dirty || createProductForm.controls['name'].touched))">
+                        <span *ngIf="createProductForm.controls['name'].errors.required">
+                                Campo requerido
+                        </span>
+                        <span *ngIf="createProductForm.controls['name'].errors.minlength">
+                                El campo tiene un minimo de caracteres de 
+                            {{createProductForm.controls['name'].errors.minlength.requiredLength}}
+                        </span>
+                        <span *ngIf="createProductForm.controls['name'].errors.maxlength">
+                                El campo tiene un máximo de caracteres de 
+                            {{createProductForm.controls['name'].errors.maxlength.requiredLength}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-b-10">
+                <div class="col-md-6">
+                    <label class="colorTitle">Stock</label>
+                    <div class="input-group">
+                        <input class="form-control" type="text" formControlName="stock" placeholder="Ingrese código producto" [ngClass]="{'has-error': (hasError && createProductForm.controls['stock'].errors) || (createProductForm.controls['stock'].errors && (createProductForm.controls['stock'].dirty || createProductForm.controls['stock'].touched))}">
+                    </div>
+                    <div class="has-error" *ngIf="(hasError && createProductForm.controls['stock'].errors) || (createProductForm.controls['stock'].errors && (createProductForm.controls['stock'].dirty || createProductForm.controls['stock'].touched))">
+                        <span *ngIf="createProductForm.controls['stock'].errors.required">
+                            Campo requerido
+                        </span>
+                        <span *ngIf="createProductForm.controls['stock'].errors.minlength">
+                            El campo tiene un minimo de caracteres de 
+                            {{createProductForm.controls['stock'].errors.minlength.requiredLength}}
+                        </span>
+                        <span *ngIf="createProductForm.controls['stock'].errors.maxlength">
+                            El campo tiene un máximo de caracteres de 
+                            {{createProductForm.controls['stock'].errors.maxlength.requiredLength}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                        <label class="colorTitle">Precio</label>
+                        <div class="input-group">
+                            <input class="form-control" type="text" formControlName="price" placeholder="Ingrese código producto" [ngClass]="{'has-error': (hasError && createProductForm.controls['price'].errors) || (createProductForm.controls['price'].errors && (createProductForm.controls['price'].dirty || createProductForm.controls['price'].touched))}">
+                        </div>
+                        <div class="has-error" *ngIf="(hasError && createProductForm.controls['price'].errors) || (createProductForm.controls['price'].errors && (createProductForm.controls['price'].dirty || createProductForm.controls['price'].touched))">
+                            <span *ngIf="createProductForm.controls['price'].errors.required">
+                                Campo requerido
+                            </span>
+                            <span *ngIf="createProductForm.controls['price'].errors.minlength">
+                                El campo tiene un minimo de caracteres de 
+                                {{createProductForm.controls['price'].errors.minlength.requiredLength}}
+                            </span>
+                            <span *ngIf="createProductForm.controls['price'].errors.maxlength">
+                                El campo tiene un máximo de caracteres de 
+                                {{createProductForm.controls['price'].errors.maxlength.requiredLength}}
+                            </span>
+                        </div>
+                    </div>
+            </div>
+        </form>
+    </ng-container>
+</id-modal>     -->
+<component-loader [show]=showLoader></component-loader>

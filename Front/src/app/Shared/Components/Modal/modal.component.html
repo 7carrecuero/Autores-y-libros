@@ -1,0 +1,26 @@
+<ng-template #modalContent let-c="close" let-d="dismiss">
+
+  <section *ngIf="!allContent">
+    <div class="modal-header">
+      <ng-content *ngIf="!title" select="[modal-header]"></ng-content>
+      <h4 *ngIf="title" class="modal-title text-credi">{{title | translate}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" [ngStyle]="styles">
+
+      <ng-content select="[modal-body]"></ng-content>
+
+    </div>
+    <div *ngIf="showButtons" class="modal-footer">
+      <button type="button" class="btn btn-primary-credi"
+        (click)="acceptModal()">{{acceptMessage | translate}}</button>
+      <button type="button" class="btn btn-primary-credi"
+        (click)="closeModal()">{{closeMessage | translate}}</button>
+    </div>
+  </section>
+  <section *ngIf="allContent">
+    <ng-content select="[modal-content]"></ng-content>
+  </section>
+</ng-template>

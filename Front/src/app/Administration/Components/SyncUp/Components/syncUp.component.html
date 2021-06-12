@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row" style="justify-content:center;">
+            <div class="col-3"></div>
+            <div class="col-6 d-grid gap-2" style="justify-content:center;">
+                <div class="card">
+                    <div class="card-header">
+                      Sincronización
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Sincronización de libros y autores</h5>
+                        <p class="card-text">Esta funcionalidad le permitira sincronizar la información sobre libros y autores.</p>
+                        <button class="btn btn-primary btn-lg btn-block" (click)="getAuthorsFilters()" type="button">Sincronizar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>
+
+<id-modal #resultModal [windowClass]="''" [showButtons]=false size="md" [closeModalInAcceptEvent]=false 
+title="Resultados de la sincronización">
+    <ng-container modal-body>
+        <h5 class="card-title">Proceso finalizado</h5>
+        <component-alertsSync #AlertsSyncBooks [syncActiveInput]="syncActive" [hasErrorInput]="hasBooksError" [titleInput]="'Libros'"></component-alertsSync>
+        <component-alertsSync #AlertsSyncAuthors [syncActiveInput]="syncActive" [hasErrorInput]="hasAuthorsError" [titleInput]="'Autores'"></component-alertsSync>                
+        <button class="btn btn-primary btn-lg btn-block" (click)="closeModal()" type="button">Cerrar</button>
+    </ng-container>
+</id-modal>    
+<component-loader [show]=showLoader></component-loader>

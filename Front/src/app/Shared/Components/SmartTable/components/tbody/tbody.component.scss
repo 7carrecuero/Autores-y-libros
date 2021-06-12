@@ -1,0 +1,26 @@
+:host {
+    .ng2-smart-row {
+        &.selected {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .ng2-smart-actions {
+            &.ng2-smart-action-multiple-select {
+                text-align: center;
+            }
+        }
+    }
+}
+
+.ng2-smart-actions {
+    text-align: center !important;
+    display: flex;
+}
+
+.ng2-smart-action-copy {
+    color: black;
+}
+
+.center-action-column {
+    display: flex;
+    flex-direction: column;
+}

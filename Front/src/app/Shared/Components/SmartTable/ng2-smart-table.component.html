@@ -1,0 +1,20 @@
+<table [id]="tableId" [ngClass]="tableClass">
+
+  <thead ng2-st-thead *ngIf="!isHideHeader || !isHideSubHeader" [grid]="grid" [isAllSelected]="isAllSelected"
+    [source]="source" [createConfirm]="createConfirm" (create)="create.emit($event)"
+    (selectAllRows)="onSelectAllRows($event)" (sort)="sort($event)" (filter)="filter($event)">
+  </thead>
+
+  <tbody ng2-st-tbody [actionDeleteId]="actionDeleteId" [actionEditId]="actionEditId" [actionCopyId]="actionCopyId"
+    [grid]="grid" [source]="source" [deleteConfirm]="deleteConfirm" [editConfirm]="editConfirm"
+    [copyConfirm]="copyConfirm" [rowClassFunction]="rowClassFunction" (edit)="edit.emit($event)"
+    (copy)="copy.emit($event)" (delete)="delete.emit($event)" (custom)="custom.emit($event)"
+    (userSelectRow)="onUserSelectRow($event)" (editRowSelect)="editRowSelect($event)"
+    (multipleSelectRow)="multipleSelectRow($event)" (rowHover)="onRowHover($event)">
+  </tbody>
+
+</table>
+
+<ng2-smart-table-pager #pager *ngIf="isPagerDisplay" [labelTotalRecords]="labelTotalRecords" [rowCount]="rowCount"
+  [source]="source" [perPageSelect]="perPageSelect" (changePage)="changePage($event)">
+</ng2-smart-table-pager>

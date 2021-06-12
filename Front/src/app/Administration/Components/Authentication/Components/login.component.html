@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Inicio de sesión</h5>
+                    <div class="alert alert-danger" role="alert" *ngIf="hasError">
+                        No ha sido posible iniciar sesión, por favor valide sus datos!
+                    </div>
+                    <form class="form-signin" autocomplete="off" novalidate [formGroup]="loginForm">
+                        <div class="form-label-group">
+                            <input type="email" class="form-control" autofocus formControlName="Username" placeholder="Nombre de usuario"
+                            [ngClass]="{'has-error': (hasError && loginForm.controls['Username'].errors) || (loginForm.controls['Username'].errors && (loginForm.controls['Username'].dirty || loginForm.controls['Username'].touched))}">
+                            <label for="inputEmail">Nombre de usuario</label>
+                        </div>
+  
+                        <div class="form-label-group">
+                            <input type="password" class="form-control" formControlName="Password" placeholder="Contraseña"
+                            [ngClass]="{'has-error': (hasError && loginForm.controls['Password'].errors) || (loginForm.controls['Password'].errors && (loginForm.controls['Password'].dirty || loginForm.controls['Password'].touched))}">
+                            <label for="inputPasswordord">Passwordord</label>
+                        </div>
+                        <button class="form-control btn btn-primary" (click)="getBooksFilters()">Iniciar Sesión</button>
+                        <hr class="my-4">
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<component-loader [show]=showLoader></component-loader>

@@ -1,0 +1,24 @@
+<form class="form-horizontal form-material" [formGroup]="form">
+    <input type="text" class="form-control" placeholder="{{ placeHolder | translate }}" formControlName="autocompleteValue" [matAutocomplete]="auto" [ngClass]="{
+      'has-error':
+        (hasError && form.get('autocompleteValue').errors) ||
+        (form.get('autocompleteValue').errors &&
+          (form.get('autocompleteValue').dirty ||
+            form.get('autocompleteValue').touched))
+    }" />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWith">
+        <mat-option *ngFor="let option of streamData | async" [value]="option">
+            {{getlistText(option)}}
+        </mat-option>
+    </mat-autocomplete>
+    <div class="has-error" *ngIf="
+      (hasError && form.get('autocompleteValue').errors) ||
+      (form.get('autocompleteValue').errors &&
+        (form.get('autocompleteValue').dirty ||
+          form.get('autocompleteValue').touched))
+    ">
+        <span *ngIf="form.get('autocompleteValue').getError('required')">
+      {{ "general.validations.requiredField" | translate }}
+    </span>
+    </div>
+</form>

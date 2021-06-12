@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Billing" Class="ProductsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-C01B2L4;Initial Catalog=Billing;Integrated Security=True;Persist Security Info=True" SettingsObjectName="DataAccess.Properties.Settings" SettingsPropertyName="BillingConnectionString1" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.sp_getProduct" Method="sp_getProduct">
+    <Parameter Name="prodID" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="sp_getProductResult">
+      <Column Name="prodID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_code" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_name" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_price" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_stock" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_getProductsFilters" Method="sp_getProductsFilters">
+    <Parameter Name="prod_code" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="prod_name" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="pageSize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pageNumber" Type="System.Int32" DbType="Int" />
+    <Parameter Name="orderBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="orderDirection" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="totalRecords" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_getProductsFiltersResult">
+      <Column Name="prodID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_name" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_code" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_price" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_stock" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_create_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="prod_update_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_createProducts" Method="sp_createProducts">
+    <Parameter Name="prod_code" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="prod_name" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="prod_price" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="prod_stock" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_updateProducts" Method="sp_updateProducts">
+    <Parameter Name="prodID" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="prod_stock" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

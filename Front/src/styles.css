@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+.ps .ps__scrollbar-y-rail {
+  left: 3px;
+  right: auto;
+}
+
+.card-header {
+  background-color: white !important;
+  /* background-color: rgb(237, 28, 36) !important; */
+}
+
+.colorTitle {
+  color: #455a64;
+}
+
+.btn-red-credi {
+  background-color: rgba(215, 0, 114, 0.8) !important;
+}
+
+.btn-blue-credi {
+  background-color: #18a9d6 !important;
+}
+
+.btn-credi {
+  background-color: #5c068c !important;
+}
+
+.text-credi {
+  color: #5c068c;
+}
+
+.list-style-type {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

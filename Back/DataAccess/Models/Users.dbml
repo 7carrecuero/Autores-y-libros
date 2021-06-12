@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Billing" Class="UsersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-C01B2L4;Initial Catalog=Billing;Integrated Security=True" SettingsObjectName="DataAccess.Properties.Settings" SettingsPropertyName="BillingConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.sp_createUser" Method="sp_createUser">
+    <Parameter Name="usr_name" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="usr_surname" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="usr_document_number" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="usr_email" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="usr_age" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_getUsersFilters" Method="sp_getUsersFilters">
+    <Parameter Name="usr_name" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="usr_surname" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="usr_document_number" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="pageSize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pageNumber" Type="System.Int32" DbType="Int" />
+    <Parameter Name="orderBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="orderDirection" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="totalRecords" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_getUsersFiltersResult">
+      <Column Name="usrID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_name" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_surname" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_document_number" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_email" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_age" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_status" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_create_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="usr_update_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_getUser" Method="sp_getUser">
+    <Parameter Name="usr_document_number" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="sp_getUserResult">
+      <Column Name="usrID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_document_number" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_name" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_surname" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_email" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_age" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_status" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="usr_create_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="usr_update_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_updateUser" Method="sp_updateUser">
+    <Parameter Name="usrID" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="usr_name" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="usr_surname" Type="System.String" DbType="VarChar(80)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
